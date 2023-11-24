@@ -1,0 +1,38 @@
+$content-color: rgb(18, 18, 79);
+$font-color: white;
+$border-color: white;
+$background-color: rgb(131, 131, 222);
+
+.nav-background{
+    background-color: $background-color;
+}
+
+.nav-header{
+    width: 100%;
+    background-color: $content-color;
+    color: $font-color;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button{
+    width: 50%;
+    height: 100px;
+    margin: 20px;
+    background-color: $content-color;
+    color: $font-color;
+    font-size: 20px;
+    border: 10px;
+    border-radius: 10px;
+}

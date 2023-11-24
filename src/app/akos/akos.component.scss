@@ -1,0 +1,55 @@
+$content-color: rgb(18, 18, 79);
+$font-color: white;
+$border-color: white;
+$background-color: rgb(131, 131, 222);
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+.akos-background{
+    background-color: $background-color;
+}
+
+.akos-header{
+    width: 100%;
+    background-color: $content-color;
+    color: $font-color;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+}
+
+.akos-backbutton{
+    position: absolute;
+    top:50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.akos-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.akos-diagram{
+    width: 80%;
+    height: 200px;
+    margin: 20px;
+    background-color: white;
+    text-align: center;
+}
+
+.akos-button{
+    width: 50%;
+    height: 50px;
+    margin: 20px;
+    background-color: $content-color;
+    color: $font-color;
+    font-size: 20px;
+    border: 10px;
+    border-radius: 10px;
+}
