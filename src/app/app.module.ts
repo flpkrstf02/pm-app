@@ -9,6 +9,8 @@ import { VajkComponent } from './vajk/vajk.component';
 import { MartinComponent } from './martin/martin.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     AkosComponent,
     HomeComponent,
     VajkComponent,
-    MartinComponent
+    MartinComponent,
+    CanvasJSAngularChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

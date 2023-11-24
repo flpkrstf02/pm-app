@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { ResponseAkos } from '../models/ResponseAkos';
+import { RequestAkos } from '../models/RequestAkos';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +14,7 @@ export class DataService {
       this.baseUrl = 'https://dummyjson.com/products';
     }
   
-    public getAkosPrediction(): Observable<Array<any>> {
+    public postAkosPrediction(request: RequestAkos): Observable<ResponseAkos> {
       let options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -20,6 +22,6 @@ export class DataService {
           'Access-Control-Allow-Origin': '*'
         })
       }
-      return this.http.get<Array<any>>(this.baseUrl + '', options);
+      return this.http.post<ResponseAkos>(this.baseUrl + '/', JSON.stringify(request), options);
     }
 }
