@@ -25,11 +25,13 @@ import { RequestAkos } from '../models/RequestAkos';
 
 export class AkosComponent {
   public predictions!: ResponseAkos;
-
   public request: RequestAkos = {
     name: "",
     modelParams: [3.2,32]
   };
+  
+  chart: any;
+  public chartOptions!: CanvasJSChart;
 
   public dummy1 = [
     {  y: 63.3 },
@@ -48,11 +50,6 @@ export class AkosComponent {
     {  y: 76 },
     {  y: 79 }
   ];
-
-  chart: any;
-
-  public chartOptions!: CanvasJSChart;
-
   public dummy2 = [
     {  y: 63.3 },
     {  y: 69 },
@@ -70,7 +67,6 @@ export class AkosComponent {
     {  y: 76 },
     {  y: 79 }
   ];
-
   public dummy3 = [
     {  y: 63.3 },
     {  y: 69 },
@@ -88,7 +84,6 @@ export class AkosComponent {
     {  y: 76 },
     {  y: 79 }
   ];
-
   public dummy4 = [
     {  y: 63.3 },
     {  y: 69 },
@@ -184,51 +179,17 @@ export class AkosComponent {
         dataPoints: this.dummy2
       }]
     });
+
     this.data.postAkosPrediction(this.request).subscribe((response: ResponseAkos) => {
-      response.predicted.forEach((asd: Array<number>) => {
+      response.predicted.forEach((data: Array<number>) => {
         this.chartOptions.options.data.push({
           type: "line",
           showInLegend: true,
           name: "asd",
-          dataPoints: asd
+          dataPoints: data
         })
       })
     });
-
-    this.dummy1 = [
-      {  y: 63.3 },
-      {  y: 69 },
-      {  y: 65 },
-      {  y: 90 },
-      {  y: 71 },
-      {  y: 65 },
-      {  y: 73 },
-      {  y: 86 },
-      {  y: 74 },
-      {  y: 75 },
-      {  y: 76 },
-      {  y: 84 },
-      {  y: 8 },
-      {  y: 76 },
-      {  y: 79 }
-    ];
-    this.dummy2 = [
-      {  y: 63.3 },
-      {  y: 69 },
-      {  y: 65 },
-      {  y: 70 },
-      {  y: 71 },
-      {  y: 65 },
-      {  y: 73 },
-      {  y: 90 },
-      {  y: 74 },
-      {  y: 75 },
-      {  y: 90 },
-      {  y: 84 },
-      {  y: 87 },
-      {  y: 7 },
-      {  y: 79 }
-    ];
     
     CanvasJS.Chart.prototype.render.call(this.chartOptions);
 
