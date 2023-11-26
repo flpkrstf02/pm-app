@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
-import { ResponseAkos } from '../models/ResponseAkos';
-import { RequestAkos } from '../models/RequestAkos';
+import { ModelRequest } from '../models/ModelRequest';
 
 @Injectable({
     providedIn: 'root'
@@ -11,10 +10,10 @@ export class DataService {
     private baseUrl: string;
   
     constructor(private http: HttpClient) {
-      this.baseUrl = 'https://dummyjson.com/products';
+      this.baseUrl = 'http://localhost:5280';
     }
   
-    public postAkosPrediction(request: RequestAkos): Observable<ResponseAkos> {
+    public postAkosPrediction(request: ModelRequest): Observable<Array<Array<number>>> {
       let options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -22,6 +21,6 @@ export class DataService {
           'Access-Control-Allow-Origin': '*'
         })
       }
-      return this.http.post<ResponseAkos>(this.baseUrl + '/', JSON.stringify(request), options);
+      return this.http.post<Array<Array<number>>>(this.baseUrl + '/pm', JSON.stringify(request), options);
     }
 }

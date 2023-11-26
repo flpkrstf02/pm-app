@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CanvasJS, CanvasJSAngularChartsModule, CanvasJSChart } from '@canvasjs/angular-charts';
-import { ResponseAkos } from '../models/ResponseAkos';
-import { RequestAkos } from '../models/RequestAkos';
+import { ModelRequest } from '../models/ModelRequest';
 
 @Component({
   selector: 'app-akos',
@@ -24,8 +23,7 @@ import { RequestAkos } from '../models/RequestAkos';
 })
 
 export class AkosComponent {
-  public predictions!: ResponseAkos;
-  public request: RequestAkos = {
+  public request: ModelRequest = {
     name: "",
     modelParams: [3.2,32]
   };
@@ -143,7 +141,7 @@ export class AkosComponent {
     CanvasJS.Chart.prototype.render.call(this.chartOptions);
   }
 
-  getPredictions(): ResponseAkos {
+  getPredictions() {
     this.chartOptions = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       theme: "light2",
@@ -167,33 +165,23 @@ export class AkosComponent {
           e.chart.render();
         }
       },
-      data: [{
-        type: "line",
-        showInLegend: true,
-        name: "Projected Sales",
-        dataPoints: this.dummy1
-      }, {
-        type: "line",
-        showInLegend: true,
-        name: "Actual Sales",
-        dataPoints: this.dummy2
-      }]
+      data: []
     });
 
-    this.data.postAkosPrediction(this.request).subscribe((response: ResponseAkos) => {
-      response.predicted.forEach((data: Array<number>) => {
+    this.data.postAkosPrediction(this.request).subscribe((response: Array<Array<number>>) => {
+      response.forEach((data: Array<number>) => {
+        const arrayOfObjects = data.map((number) => {
+          return { y: number };
+        });
         this.chartOptions.options.data.push({
           type: "line",
           showInLegend: true,
           name: "asd",
-          dataPoints: data
+          dataPoints: arrayOfObjects
         })
+        CanvasJS.Chart.prototype.render.call(this.chartOptions);
       })
     });
-    
-    CanvasJS.Chart.prototype.render.call(this.chartOptions);
-
-    return this.predictions;
   }
 
   navigate(path: string) {
