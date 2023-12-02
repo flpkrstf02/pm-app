@@ -13,7 +13,7 @@ export class DataService {
       this.baseUrl = 'http://localhost:5280';
     }
   
-    public postAkosPrediction(request: ModelRequest): Observable<Array<Array<number>>> {
+    public postPrediction(request: ModelRequest, activeModel: any): Observable<Array<Array<number>>> {
       let options = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',

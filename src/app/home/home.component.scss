@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 $content-color: rgb(18, 18, 79);
 $font-color: white;
 $border-color: white;
@@ -17,6 +19,14 @@ $header-height: 64px;
     padding: 15px;
     text-align: center;
     font-size: 30px;
+    position: relative;
+}
+
+.backbutton{
+    position: absolute;
+    top:50%;
+    left: 0;
+    transform: translateY(-50%);
 }
 
 .nav-container{

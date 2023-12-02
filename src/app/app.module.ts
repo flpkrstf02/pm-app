@@ -8,13 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { VajkComponent } from './vajk/vajk.component';
 import { MartinComponent } from './martin/martin.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { ModelComponent } from './model/model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -24,7 +23,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     HomeComponent,
     VajkComponent,
     MartinComponent,
-    CanvasJSAngularChartsModule
+    CanvasJSAngularChartsModule,
+    ModelComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

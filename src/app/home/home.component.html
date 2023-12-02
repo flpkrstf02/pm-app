@@ -1,10 +1,16 @@
 <div class="nav-background">
     <div class="nav-header">
+        <button class="backbutton" *ngIf="!showNavButtons" mat-icon-button color="primary" (click)="showHomePage()">
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
         Projektmunka
     </div>
-    <div class="nav-container">
-        <button class="nav-button" (click)="navigate('akos-component')">Ákos</button>
-        <button class="nav-button" (click)="navigate('martin-component')">Martin</button>
-        <button class="nav-button" (click)="navigate('vajk-component')">Vajk</button>
+    <div class="nav-container" *ngIf="showNavButtons">
+        <button class="nav-button" (click)="showComponent('akos')">Ákos</button>
+        <button class="nav-button" (click)="showComponent('martin')">Martin</button>
+        <button class="nav-button" (click)="showComponent('vajk')">Vajk</button>
+    </div>
+    <div class="model-container" *ngIf="!showNavButtons">
+        <app-model [activeModel]="activeModel"></app-model>
     </div>
 </div>

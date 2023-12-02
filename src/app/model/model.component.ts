@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,96 +9,26 @@ import { CanvasJS, CanvasJSAngularChartsModule, CanvasJSChart } from '@canvasjs/
 import { ModelRequest } from '../models/ModelRequest';
 
 @Component({
-  selector: 'app-akos',
-  standalone: true,
+  selector: 'app-model',
+  templateUrl: './model.component.html',
+  styleUrl: './model.component.scss',
   imports: [CommonModule,
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
     CanvasJSAngularChartsModule
   ],
-  providers: [HttpClientModule],
-  templateUrl: './akos.component.html',
-  styleUrl: './akos.component.scss'
+  standalone:  true
 })
+export class ModelComponent {
+  @Input() public activeModel!: string;
 
-export class AkosComponent {
   public request: ModelRequest = {
     name: "",
     modelParams: [3.2,32]
   };
   
-  chart: any;
   public chartOptions!: CanvasJSChart;
-
-  public dummy1 = [
-    {  y: 63.3 },
-    {  y: 69 },
-    {  y: 65 },
-    {  y: 70 },
-    {  y: 71 },
-    {  y: 65 },
-    {  y: 73 },
-    {  y: 86 },
-    {  y: 74 },
-    {  y: 75 },
-    {  y: 76 },
-    {  y: 84 },
-    {  y: 87 },
-    {  y: 76 },
-    {  y: 79 }
-  ];
-  public dummy2 = [
-    {  y: 63.3 },
-    {  y: 69 },
-    {  y: 65 },
-    {  y: 70 },
-    {  y: 71 },
-    {  y: 65 },
-    {  y: 73 },
-    {  y: 86 },
-    {  y: 74 },
-    {  y: 75 },
-    {  y: 76 },
-    {  y: 84 },
-    {  y: 87 },
-    {  y: 76 },
-    {  y: 79 }
-  ];
-  public dummy3 = [
-    {  y: 63.3 },
-    {  y: 69 },
-    {  y: 65 },
-    {  y: 70 },
-    {  y: 71 },
-    {  y: 65 },
-    {  y: 1 },
-    {  y: 86 },
-    {  y: 74 },
-    {  y: 75 },
-    {  y: 76 },
-    {  y: 84 },
-    {  y: 87 },
-    {  y: 76 },
-    {  y: 79 }
-  ];
-  public dummy4 = [
-    {  y: 63.3 },
-    {  y: 69 },
-    {  y: 65 },
-    {  y: 70 },
-    {  y: 71 },
-    {  y: 65 },
-    {  y: 73 },
-    {  y: 86 },
-    {  y: 74 },
-    {  y: 75 },
-    {  y: 76 },
-    {  y: 84 },
-    {  y: 87 },
-    {  y: 76 },
-    {  y: 2 }
-  ];
 
   constructor(private router: Router, private data: DataService) { }
 
@@ -168,7 +98,7 @@ export class AkosComponent {
       data: []
     });
 
-    this.data.postPrediction(this.request,'').subscribe((response: Array<Array<number>>) => {
+    this.data.postPrediction(this.request, this.activeModel).subscribe((response: Array<Array<number>>) => {
       response.forEach((data: Array<number>) => {
         const arrayOfObjects = data.map((number) => {
           return { y: number };
@@ -182,9 +112,5 @@ export class AkosComponent {
         CanvasJS.Chart.prototype.render.call(this.chartOptions);
       })
     });
-  }
-
-  navigate(path: string) {
-    this.router.navigate([path]);
   }
 }
