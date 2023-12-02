@@ -6,9 +6,9 @@
         Projektmunka
     </div>
     <div class="nav-container" *ngIf="showNavButtons">
-        <button class="nav-button" (click)="showComponent('akos')">Ákos</button>
-        <button class="nav-button" (click)="showComponent('martin')">Martin</button>
-        <button class="nav-button" (click)="showComponent('vajk')">Vajk</button>
+        <button class="nav-button" (click)="showComponent(modelType.Akos)">Ákos</button>
+        <button class="nav-button" (click)="showComponent(modelType.Martin)">Martin</button>
+        <button class="nav-button" (click)="showComponent(modelType.Vajk)">Vajk</button>
     </div>
     <div class="model-container" *ngIf="!showNavButtons">
         <app-model [activeModel]="activeModel"></app-model>

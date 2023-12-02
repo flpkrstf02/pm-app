@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ModelComponent } from '../model/model.component';
+import { ModelType } from '../models/modelType.enum';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,9 @@ import { ModelComponent } from '../model/model.component';
 })
 export class HomeComponent {
   public showNavButtons: boolean = true;
-  public activeModel: string = '';
+  public activeModel!: ModelType;
+
+  public readonly modelType: typeof ModelType = ModelType;
 
   constructor(private router: Router) { }
 
@@ -34,7 +37,7 @@ export class HomeComponent {
     this.showNavButtons = true;
   }
 
-  showComponent(model: string){
+  showComponent(model: ModelType){
     this.showNavButtons = false;
 
     this.activeModel = model;
