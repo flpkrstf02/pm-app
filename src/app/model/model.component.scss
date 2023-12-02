@@ -1,5 +1,6 @@
 $content-color: rgb(18, 18, 79);
 $font-color: white;
+$header-height: 64px;
 
 .diagram{
     width: 80%;
@@ -18,4 +19,13 @@ $font-color: white;
     font-size: 20px;
     border: 10px;
     border-radius: 10px;
+}
+
+.model-container{
+    width: 100%;
+    height: calc(100vh - $header-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
