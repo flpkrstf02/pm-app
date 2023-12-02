@@ -2,9 +2,11 @@ $content-color: rgb(18, 18, 79);
 $font-color: white;
 $border-color: white;
 $background-color: rgb(131, 131, 222);
+$header-height: 64px;
 
 .nav-background{
     background-color: $background-color;
+    height: 100%;
 }
 
 .nav-header{
@@ -19,7 +21,7 @@ $background-color: rgb(131, 131, 222);
 
 .nav-container{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - $header-height);
     display: flex;
     flex-direction: column;
     align-items: center;
