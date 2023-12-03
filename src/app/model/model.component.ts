@@ -7,6 +7,7 @@ import { DataService } from '../services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CanvasJS, CanvasJSAngularChartsModule, CanvasJSChart } from '@canvasjs/angular-charts';
 import { ModelRequest } from '../models/ModelRequest';
+import { ModelType } from '../models/modelType.enum';
 
 @Component({
   selector: 'app-model',
@@ -21,7 +22,7 @@ import { ModelRequest } from '../models/ModelRequest';
   standalone:  true
 })
 export class ModelComponent {
-  @Input() public activeModel!: string;
+  @Input() public activeModel!: ModelType;
 
   public request: ModelRequest = {
     name: "",

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,20 +25,14 @@ export class HomeComponent {
 
   public readonly modelType: typeof ModelType = ModelType;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  // navigate(path: string) {
-  //   this.showNavButtons = false;
-  //   //this.router.navigate([path]);
-  // }
-
-  showHomePage(){
+  showHomePage() {
     this.showNavButtons = true;
   }
 
-  showComponent(model: ModelType){
+  showComponent(model: ModelType) {
     this.showNavButtons = false;
-
     this.activeModel = model;
   }
 }
